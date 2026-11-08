@@ -1,0 +1,17 @@
+{
+  "name": "hen-management-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hen Management System Monorepo",
+  "scripts": {
+    "expo": "npm --prefix mobile start -- --tunnel",
+    "mobile": "npm --prefix mobile start -- --tunnel",
+    "tunnel": "npm --prefix mobile start -- --tunnel",
+    "start": "npm --prefix mobile start -- --tunnel",
+    "local": "npm --prefix mobile start",
+    "android": "npm --prefix mobile run android",
+    "web": "npm --prefix mobile run web",
+    "admin": "npm --prefix web run dev",
+    "web-admin": "npm --prefix web run dev"
+  }
+}

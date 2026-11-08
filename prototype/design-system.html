@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JV Brand Design System & UI Specification</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background: #0B1120;
+      color: #F8FAFC;
+      padding: 40px 20px;
+    }
+    .spec-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .spec-section {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .token-card {
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .token-swatch {
+      height: 48px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="spec-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <div>
+        <h1 style="font-size:24px; font-weight:800;">JV Poultry Mandi — UI Design System</h1>
+        <p style="color:#94A3B8; font-size:13px; margin-top:4px;">Unified Design Tokens & React Native Mobile Component Specifications</p>
+      </div>
+      <a href="index.html" class="proto-btn active" style="text-decoration:none;">← Return to Mobile Prototype</a>
+    </div>
+
+    <!-- Section 1: Color Palette -->
+    <div class="spec-section">
+      <h2 style="font-size:16px; font-weight:700;">1. Color Palette Tokens</h2>
+      <div class="spec-grid">
+        <div class="token-card">
+          <div class="token-swatch" style="background:#2563EB;"></div>
+          <h4>Primary Blue</h4>
+          <p style="font-size:12px; color:#94A3B8;"><code>#2563EB</code></p>
+          <span style="font-size:11px; color:#60A5FA;">Brand color, Marga Male birds, Primary CTA</span>
+        </div>
+
+        <div class="token-card">
+          <div class="token-swatch" style="background:#0D9488;"></div>
+          <h4>Mandi Teal</h4>
+          <p style="font-size:12px; color:#94A3B8;"><code>#0D9488</code></p>
+          <span style="font-size:11px; color:#2DD4BF;">Secondary CTA, Margee Female birds, Payments</span>
+        </div>
+
+        <div class="token-card">
+          <div class="token-swatch" style="background:#16A34A;"></div>
+          <h4>Success Green</h4>
+          <p style="font-size:12px; color:#94A3B8;"><code>#16A34A</code></p>
+          <span style="font-size:11px; color:#4ADE80;">Settled status, Verified badges</span>
+        </div>
+
+        <div class="token-card">
+          <div class="token-swatch" style="background:#F59E0B;"></div>
+          <h4>Warning Amber</h4>
+          <p style="font-size:12px; color:#94A3B8;"><code>#F59E0B</code></p>
+          <span style="font-size:11px; color:#FBBF24;">Due balances, Pending clearances</span>
+        </div>
+
+        <div class="token-card">
+          <div class="token-swatch" style="background:#F8FAFC; border:1px solid #475569;"></div>
+          <h4 style="color:#F8FAFC;">Light Slate Canvas</h4>
+          <p style="font-size:12px; color:#94A3B8;"><code>#F8FAFC</code></p>
+          <span style="font-size:11px; color:#94A3B8;">Approved mobile canvas background</span>
+        </div>
+
+        <div class="token-card">
+          <div class="token-swatch" style="background:#0F172A; border:1px solid #475569;"></div>
+          <h4>Dark Slate</h4>
+          <p style="font-size:12px; color:#94A3B8;"><code>#0F172A</code></p>
+          <span style="font-size:11px; color:#94A3B8;">Primary typography, Topbar, Dark Mode</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Zero Emoji & 2D Vector Glyphs -->
+    <div class="spec-section">
+      <h2 style="font-size:16px; font-weight:700;">2. 2D Vector Icon Standards (Zero Emojis Enforced)</h2>
+      <p style="font-size:12px; color:#94A3B8; margin-top:4px;">
+        In accordance with the <strong>UI Correction Report</strong>, 100% of emojis have been eliminated from all mobile screens and replaced with flat 2D vector glyphs.
+      </p>
+
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;">
+        <div style="display:flex; align-items:center; gap:8px; background:#0F172A; padding:8px 14px; border-radius:8px; border:1px solid #334155;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          <span style="font-size:12px;">Mandi Home</span>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px; background:#0F172A; padding:8px 14px; border-radius:8px; border:1px solid #334155;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span style="font-size:12px;">Weigh-in Scale</span>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px; background:#0F172A; padding:8px 14px; border-radius:8px; border:1px solid #334155;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+          <span style="font-size:12px;">Customer Khata</span>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px; background:#0F172A; padding:8px 14px; border-radius:8px; border:1px solid #334155;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+          <span style="font-size:12px;">Billing & Receipts</span>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px; background:#0F172A; padding:8px 14px; border-radius:8px; border:1px solid #334155;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span style="font-size:12px;">Voice & Chat</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Mandi Business Calculation Rules -->
+    <div class="spec-section">
+      <h2 style="font-size:16px; font-weight:700;">3. Strict Mandi Calculation & Access Rules</h2>
+      <ul style="font-size:13px; color:#CBD5E1; line-height:1.8; margin-top:10px; padding-left:20px;">
+        <li><strong>Admin-Only Standard Rates:</strong> Operators cannot edit rates on intake. Rates are locked to daily <code>rates.MARGA</code> &amp; <code>rates.MARGEE</code>.</li>
+        <li><strong>Net Weight Formula:</strong> <code>Net Weight (kg) = Gross Weight - (Crates Count × Tare per crate)</code>.</li>
+        <li><strong>Valuation Derivation:</strong> <code>Batch Amount (₹) = Net Weight (kg) × Standard Rate (₹/kg)</code>.</li>
+        <li><strong>Customer Privacy Rule:</strong> Customer creation modals strictly omit the physical address field.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
+

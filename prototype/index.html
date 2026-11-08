@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Hen Management Mobile App Prototype — Oppo Reno 8 Simulation</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563EB'><rect width='24' height='24' rx='6' fill='%232563EB'/><path d='M12 4v16m-8-8h16' stroke='white' stroke-width='3'/></svg>">
+</head>
+<body>
+
+  <!-- Topbar Controls -->
+  <header class="proto-topbar">
+    <div class="brand-title">
+      <div class="brand-logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7v5l3 3"></path>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>JV Poultry Mandi — Mobile Prototype</h1>
+        <p>Interactive Android / ColorOS Simulator for Oppo Reno 8</p>
+      </div>
+    </div>
+
+    <div class="controls-group">
+      <!-- Device Switcher -->
+      <button class="proto-btn btn-device-switch active" data-device="oppo-reno" onclick="setDevice('oppo-reno')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18"></line>
+        </svg>
+        Oppo Reno 8
+      </button>
+      <button class="proto-btn btn-device-switch" data-device="iphone" onclick="setDevice('iphone')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="4"></rect>
+          <circle cx="12" cy="18" r="1"></circle>
+        </svg>
+        iPhone 16 Pro
+      </button>
+      <button class="proto-btn btn-device-switch" data-device="fullscreen" onclick="setDevice('fullscreen')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <polyline points="9 21 3 21 3 15"></polyline>
+          <line x1="21" y1="3" x2="14" y2="10"></line>
+          <line x1="3" y1="21" x2="10" y2="14"></line>
+        </svg>
+        Full Screen
+      </button>
+
+      <!-- Role Switcher -->
+      <button class="proto-btn btn-role-switch active" data-role="admin" onclick="setRole('admin')">Super Admin</button>
+      <button class="proto-btn btn-role-switch" data-role="user" onclick="setRole('user')">Field Operator</button>
+
+      <!-- Theme Switcher -->
+      <button class="proto-btn" onclick="toggleTheme()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+        </svg>
+        Theme
+      </button>
+
+      <a href="design-system.html" class="proto-btn secondary-active" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        Design Tokens
+      </a>
+    </div>
+  </header>
+
+  <!-- Workspace -->
+  <main class="proto-workspace">
+
+    <!-- Device Chassis -->
+    <div class="device-wrapper">
+      <div id="device-chassis" class="device-oppo-reno">
+
+        <!-- Oppo Punch Hole Camera -->
+        <div class="reno-punchhole"></div>
+
+        <!-- iPhone Dynamic Island -->
+        <div class="iphone-island"></div>
+
+        <!-- Inner Screen -->
+        <div class="screen-frame">
+
+          <!-- Phone Status Bar -->
+          <div class="phone-status-bar">
+            <div class="status-left">
+              <span id="phone-clock">11:00 AM</span>
+            </div>
+            <div class="status-right">
+              <!-- 5G Icon -->
+              <span style="font-size:10px; font-weight:800; letter-spacing:0.5px;">5G</span>
+              <!-- Wi-Fi Icon -->
+              <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+              </svg>
+              <!-- Battery Icon -->
+              <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect>
+                <line x1="22" y1="11" x2="22" y2="13"></line>
+                <rect x="4" y="9" width="10" height="6" fill="currentColor"></rect>
+              </svg>
+            </div>
+          </div>
+
+          <!-- App Top Header -->
+          <div class="app-header">
+            <div class="header-left">
+              <div class="header-avatar">JV</div>
+              <div class="header-meta">
+                <h2 id="header-title">Mandi Command Center</h2>
+                <p>
+                  <span class="badge-live"></span>
+                  <span id="header-user-role">Super Admin</span> • Live Mandi
+                </p>
+              </div>
+            </div>
+            <div class="header-right">
+              <button class="icon-btn" onclick="openModal('modal-update-rates')" title="Daily Mandi Rates">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </button>
+              <button class="icon-btn" onclick="openModal('modal-batch-add')" title="Add Batch Intake">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Toast Notification Container -->
+          <div id="toast-container" class="toast-container"></div>
+
+          <!-- Screen Viewport -->
+          <div class="screen-viewport">
+
+            <!-- SCREEN 1: DASHBOARD / MANDI -->
+            <div id="screen-home" class="app-screen active">
+
+              <!-- Mandi Benchmark Rates Ribbon -->
+              <div class="rate-ribbon" onclick="openModal('modal-update-rates')">
+                <div class="rate-ribbon-header">
+                  <span class="rate-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    Live Mandi Benchmark Index
+                  </span>
+                  <span class="rate-edit-badge">Admin Locked 🔒</span>
+                </div>
+                <div class="rate-grid">
+                  <div class="rate-box">
+                    <div class="rate-box-label">
+                      <span class="rate-indicator-dot dot-marga"></span>
+                      MARGA (MALE)
+                    </div>
+                    <div class="rate-box-val" id="val-rate-marga">₹142.00 <span>/kg</span></div>
+                  </div>
+                  <div class="rate-box">
+                    <div class="rate-box-label">
+                      <span class="rate-indicator-dot dot-margee"></span>
+                      MARGEE (FEMALE)
+                    </div>
+                    <div class="rate-box-val" id="val-rate-margee">₹128.50 <span>/kg</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Action Toolbar -->
+              <div class="quick-actions">
+                <div class="action-tile" onclick="openModal('modal-batch-add')">
+                  <div class="action-icon-wrap action-icon-blue">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="16"></line>
+                      <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                  </div>
+                  <span class="action-label">+ Batch</span>
+                </div>
+
+                <div class="action-tile" onclick="openModal('modal-record-payment')">
+                  <div class="action-icon-wrap action-icon-teal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                      <line x1="12" y1="8" x2="12" y2="16"></line>
+                      <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                  </div>
+                  <span class="action-label">Record ₹</span>
+                </div>
+
+                <div class="action-tile" onclick="openModal('modal-add-customer')">
+                  <div class="action-icon-wrap action-icon-amber">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="8.5" cy="7" r="4"></circle>
+                      <line x1="20" y1="8" x2="20" y2="14"></line>
+                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                  </div>
+                  <span class="action-label">+ Customer</span>
+                </div>
+
+                <div class="action-tile" onclick="switchTab('chat')">
+                  <div class="action-icon-wrap action-icon-green">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                  </div>
+                  <span class="action-label">Voice Chat</span>
+                </div>
+              </div>
+
+              <!-- Today's Mandi KPI Metrics Grid -->
+              <div class="metrics-grid">
+                <div class="kpi-card">
+                  <div class="kpi-header">
+                    <span class="kpi-title">Today's Intake</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div class="kpi-value" id="kpi-intake">1,450.5 kg</div>
+                  <div class="kpi-footer">Net weigh-in weight</div>
+                </div>
+
+                <div class="kpi-card">
+                  <div class="kpi-header">
+                    <span class="kpi-title">Birds Count</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2">
+                      <path d="M18 8A6 6 0 0 0 6 8c0 7 6 9 6 9s6-2 6-9"></path>
+                    </svg>
+                  </div>
+                  <div class="kpi-value" id="kpi-birds">620 birds</div>
+                  <div class="kpi-footer">Across all crates</div>
+                </div>
+
+                <div class="kpi-card">
+                  <div class="kpi-header">
+                    <span class="kpi-title">Market Turnover</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2">
+                      <line x1="12" y1="1" x2="12" y2="23"></line>
+                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                  </div>
+                  <div class="kpi-value" id="kpi-turnover">₹1,98,420</div>
+                  <div class="kpi-footer">Calculated via live rates</div>
+                </div>
+
+                <div class="kpi-card">
+                  <div class="kpi-header">
+                    <span class="kpi-title">Outstanding Due</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                  </div>
+                  <div class="kpi-value" id="kpi-due" style="color:#B45309;">₹45,200</div>
+                  <div class="kpi-footer">Customer ledger balance</div>
+                </div>
+              </div>
+
+              <!-- Recent Mandi Intakes Section -->
+              <div class="section-header">
+                <span class="section-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                  </svg>
+                  Recent Intake Batches
+                </span>
+                <a class="section-link" onclick="switchTab('hens')">View All</a>
+              </div>
+
+              <div id="recent-hens-list">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+
+            <!-- SCREEN 2: HENS INTAKE & WEIGH-IN -->
+            <div id="screen-hens" class="app-screen">
+              <div class="section-header">
+                <span class="section-title">All Hen Weigh-in Batches</span>
+                <button class="proto-btn active" onclick="openModal('modal-batch-add')" style="padding:4px 8px; font-size:11px;">+ New Batch</button>
+              </div>
+
+              <div id="global-hens-list">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- SCREEN 3: CUSTOMERS & KHATA LEDGER -->
+            <div id="screen-customers" class="app-screen">
+              <div style="margin-bottom:12px;">
+                <input type="text" id="customer-search-input" class="form-input" placeholder="Search customer or phone..." oninput="renderCustomersList()" style="margin-bottom:8px;">
+                
+                <div style="display:flex; gap:6px;">
+                  <select id="customer-filter-mode" class="form-select" onchange="renderCustomersList()" style="flex:1;">
+                    <option value="all">All Accounts</option>
+                    <option value="due">Pending Due Only</option>
+                    <option value="settled">Settled / Zero Balance</option>
+                  </select>
+                  <button class="proto-btn active" onclick="openModal('modal-add-customer')">+ Customer</button>
+                </div>
+              </div>
+
+              <div id="customers-list">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- SCREEN 4: PAYMENTS & BILLING -->
+            <div id="screen-payments" class="app-screen">
+              <div class="kpi-card" style="margin-bottom:14px; background:linear-gradient(135deg, #0F766E, #0D9488); color:white;">
+                <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px; opacity:0.85;">Total Today's Collections</span>
+                <div style="font-size:24px; font-weight:800; margin-top:4px;">₹82,400</div>
+                <div style="font-size:11px; margin-top:4px; opacity:0.9;">Cash: ₹34,000 • UPI / Bank: ₹48,400</div>
+              </div>
+
+              <div class="section-header">
+                <span class="section-title">Payment Receipts Ledger</span>
+                <button class="proto-btn secondary-active" onclick="openModal('modal-record-payment')" style="padding:4px 8px; font-size:11px;">+ Record ₹</button>
+              </div>
+
+              <div id="payments-list">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- SCREEN 5: 1-TO-1 CHAT & VOICE NOTE (MATCHES OneToOneChatScreen.js) -->
+            <div id="screen-chat" class="app-screen" style="height:100%; display:flex; flex-direction:column;">
+              <div style="background:var(--color-surface); padding:8px 12px; border-radius:var(--radius-lg); border:1px solid var(--color-border); margin-bottom:10px; display:flex; align-items:center; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="header-avatar" style="width:28px; height:28px; font-size:11px;">ADM</div>
+                  <div>
+                    <h5 style="font-size:12px; font-weight:700; color:var(--color-text-primary);">Mandi Control Room</h5>
+                    <span style="font-size:10px; color:var(--color-success); font-weight:600;">● Online</span>
+                  </div>
+                </div>
+                <span style="font-size:10px; color:var(--color-text-muted);">Voice Supported</span>
+              </div>
+
+              <div id="chat-messages-container" class="chat-messages" style="flex:1; min-height:360px;">
+                <!-- Populated via JS -->
+              </div>
+
+              <div class="chat-input-bar">
+                <input type="text" id="chat-input-text" class="chat-input" placeholder="Type mandi message...">
+                <button id="chat-mic-btn" class="mic-btn" title="Tap to record voice note">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                  </svg>
+                </button>
+                <button id="chat-send-btn" class="icon-btn" style="background:var(--color-primary); color:white; border-color:var(--color-primary);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- SCREEN 6: SYSTEM AUDIT & SETTINGS -->
+            <div id="screen-more" class="app-screen">
+              <div class="section-header">
+                <span class="section-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                  Compliance & Security Audit Trail
+                </span>
+              </div>
+              <div id="audit-logs-list">
+                <!-- Populated via JS -->
+              </div>
+
+              <div class="section-header" style="margin-top:20px;">
+                <span class="section-title">Device & Network Connection</span>
+              </div>
+              <div class="kpi-card">
+                <p style="font-size:12px; color:var(--color-text-secondary); line-height:1.5;">
+                  <strong>ADB Port Bridge:</strong> Connect your Oppo Reno 8 via USB with debugging enabled, then run:
+                </p>
+                <div style="background:#0F172A; color:#38BDF8; padding:8px 10px; border-radius:6px; font-family:monospace; font-size:11px; margin-top:6px;">
+                  adb reverse tcp:8000 tcp:8000<br>
+                  adb reverse tcp:8081 tcp:8081
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /screen-viewport -->
+
+          <!-- Bottom Tab Navigation -->
+          <nav class="app-bottom-nav">
+            <button class="nav-item active" data-tab="home">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Mandi</span>
+            </button>
+
+            <button class="nav-item" data-tab="hens">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
+              <span>Hens</span>
+            </button>
+
+            <button class="nav-item" data-tab="customers">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Khata</span>
+            </button>
+
+            <button class="nav-item" data-tab="payments">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+              <span>Billing</span>
+            </button>
+
+            <button class="nav-item" data-tab="chat">
+              <div class="nav-badge">1</div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Chat</span>
+            </button>
+
+            <button class="nav-item" data-tab="more">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="1"></circle>
+                <circle cx="12" cy="5" r="1"></circle>
+                <circle cx="12" cy="19" r="1"></circle>
+              </svg>
+              <span>More</span>
+            </button>
+          </nav>
+
+          <!-- Android Bottom Home Indicator -->
+          <div class="home-indicator"></div>
+
+        </div><!-- /screen-frame -->
+
+      </div><!-- /device-chassis -->
+    </div><!-- /device-wrapper -->
+
+    <!-- Sidebar: Design Tokens, QR Code, & Live Guide -->
+    <aside class="proto-sidebar">
+      <div class="sidebar-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        Approved JV Design Tokens
+      </div>
+
+      <div>
+        <div class="spec-token-row">
+          <div><span class="color-chip" style="background:#2563EB;"></span><strong>Primary Blue</strong></div>
+          <code>#2563EB</code>
+        </div>
+        <div class="spec-token-row">
+          <div><span class="color-chip" style="background:#0D9488;"></span><strong>Mandi Teal</strong></div>
+          <code>#0D9488</code>
+        </div>
+        <div class="spec-token-row">
+          <div><span class="color-chip" style="background:#F8FAFC; border:1px solid #475569;"></span><strong>Slate Canvas</strong></div>
+          <code>#F8FAFC</code>
+        </div>
+        <div class="spec-token-row">
+          <div><span class="color-chip" style="background:#DBEAFE;"></span><strong>Blue Border</strong></div>
+          <code>#DBEAFE</code>
+        </div>
+        <div class="spec-token-row">
+          <div><span class="color-chip" style="background:#16A34A;"></span><strong>Settled Green</strong></div>
+          <code>#16A34A</code>
+        </div>
+        <div class="spec-token-row">
+          <div><span class="color-chip" style="background:#F59E0B;"></span><strong>Due Amber</strong></div>
+          <code>#F59E0B</code>
+        </div>
+      </div>
+
+      <div class="sidebar-heading" style="margin-top:8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18"></line>
+        </svg>
+        Open on Oppo Reno 8
+      </div>
+
+      <div class="qr-box">
+        <svg width="120" height="120" viewBox="0 0 100 100" style="background:white; padding:8px; border-radius:8px;">
+          <!-- Simple Stylized QR Pattern Matrix -->
+          <rect x="10" y="10" width="24" height="24" fill="#0F172A"/>
+          <rect x="14" y="14" width="16" height="16" fill="white"/>
+          <rect x="18" y="18" width="8" height="8" fill="#2563EB"/>
+          
+          <rect x="66" y="10" width="24" height="24" fill="#0F172A"/>
+          <rect x="70" y="14" width="16" height="16" fill="white"/>
+          <rect x="74" y="18" width="8" height="8" fill="#2563EB"/>
+
+          <rect x="10" y="66" width="24" height="24" fill="#0F172A"/>
+          <rect x="14" y="70" width="16" height="16" fill="white"/>
+          <rect x="18" y="74" width="8" height="8" fill="#2563EB"/>
+
+          <rect x="42" y="14" width="16" height="6" fill="#0F172A"/>
+          <rect x="42" y="24" width="8" height="8" fill="#0D9488"/>
+          <rect x="54" y="24" width="6" height="14" fill="#0F172A"/>
+          <rect x="38" y="42" width="24" height="8" fill="#2563EB"/>
+          <rect x="68" y="44" width="18" height="12" fill="#0F172A"/>
+          <rect x="14" y="44" width="16" height="12" fill="#0F172A"/>
+          <rect x="42" y="60" width="18" height="18" fill="#0F172A"/>
+          <rect x="66" y="66" width="12" height="12" fill="#0D9488"/>
+          <rect x="80" y="80" width="10" height="10" fill="#2563EB"/>
+        </svg>
+        <p><strong>Mobile URL on Wi-Fi:</strong><br><code style="color:#60A5FA;">http://172.20.10.10:8080</code></p>
+      </div>
+
+      <div style="font-size:11px; color:#94A3B8; line-height:1.4;">
+        ✓ Zero emojis enforced (2D Vector Glyphs only)<br>
+        ✓ Strict Mandi rate locks (Admin-only modification)<br>
+        ✓ Customer khata with strictly NO address field<br>
+        ✓ Automatic Tare & Net weight calculation
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- =======================================================
+       MODAL 1: BATCH ADD HEN (Weigh-in & Tare Deduction)
+       ======================================================= -->
+  <div id="modal-batch-add" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <h3 class="sheet-title">+ Batch Hen Weigh-in</h3>
+        <button class="close-sheet-btn" onclick="closeModal('modal-batch-add')">✕</button>
+      </div>
+
+      <form id="form-add-batch">
+        <div class="form-group">
+          <label class="form-label">Customer Khata Account</label>
+          <select id="batch-customer-select" class="form-select" required></select>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label class="form-label">Bird Category</label>
+            <select id="batch-type" class="form-select">
+              <option value="MARGA">Marga (Male)</option>
+              <option value="MARGEE">Margee (Female)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Birds Count</label>
+            <input type="number" id="batch-birds" class="form-input" placeholder="e.g. 50" required>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label class="form-label">Gross Weight (kg)</label>
+            <input type="number" step="0.1" id="batch-gross-weight" class="form-input" placeholder="e.g. 112.5" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Crates Count</label>
+            <input type="number" id="batch-crates" class="form-input" value="5" placeholder="Crates">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label class="form-label">Tare / Crate (kg)</label>
+            <input type="number" step="0.1" id="batch-crate-tare" class="form-input" value="2.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Standard Mandi Rate</label>
+            <input type="text" id="batch-locked-rate" class="form-input input-read-only" readonly>
+          </div>
+        </div>
+
+        <!-- Calculation Preview Ribbon -->
+        <div style="background:var(--color-primary-light); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:10px 12px; margin:8px 0 14px;">
+          <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+            <span>Total Tare Deduction:</span>
+            <strong id="batch-total-tare-display">10.5 kg</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700; color:var(--color-primary); margin-bottom:4px;">
+            <span>Calculated Net Weight:</span>
+            <span id="batch-net-weight-display">102.0 kg</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:800; color:var(--color-text-primary); border-top:1px dashed #93C5FD; padding-top:4px;">
+            <span>Total Batch Valuation:</span>
+            <span id="batch-total-amount-display">₹14,484.00</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Confirm & Save to Ledger
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================
+       MODAL 2: ADD CUSTOMER (Strictly NO address field!)
+       ======================================================= -->
+  <div id="modal-add-customer" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <h3 class="sheet-title">+ Add New Customer</h3>
+        <button class="close-sheet-btn" onclick="closeModal('modal-add-customer')">✕</button>
+      </div>
+
+      <form id="form-add-customer">
+        <div class="form-group">
+          <label class="form-label">Full Name / Trading Firm</label>
+          <input type="text" id="cust-name" class="form-input" placeholder="e.g. Royal Broiler Mandi" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mobile Phone Number</label>
+          <input type="tel" id="cust-phone" class="form-input" placeholder="e.g. +91 98765 43210" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Opening Due Balance (₹)</label>
+          <input type="number" id="cust-balance" class="form-input" placeholder="0 if cleared" value="0">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Notes / Identification</label>
+          <input type="text" id="cust-notes" class="form-input" placeholder="e.g. Wholesale buyer, Gate 2">
+        </div>
+
+        <button type="submit" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="8.5" cy="7" r="4"></circle>
+          </svg>
+          Create Customer Account
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================
+       MODAL 3: RECORD PAYMENT
+       ======================================================= -->
+  <div id="modal-record-payment" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <h3 class="sheet-title">Record Payment Settlement</h3>
+        <button class="close-sheet-btn" onclick="closeModal('modal-record-payment')">✕</button>
+      </div>
+
+      <form id="form-record-payment">
+        <div class="form-group">
+          <label class="form-label">Customer Account</label>
+          <select id="payment-customer-select" class="form-select" required></select>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label class="form-label">Payment Amount (₹)</label>
+            <input type="number" id="payment-amount" class="form-input" placeholder="e.g. 15000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Payment Mode</label>
+            <select id="payment-mode" class="form-select">
+              <option value="UPI">UPI / QR Code</option>
+              <option value="Cash">Cash at Counter</option>
+              <option value="Bank Transfer">Bank Transfer / IMPS</option>
+              <option value="Cheque">Cheque</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Transaction Reference / UTR</label>
+          <input type="text" id="payment-ref" class="form-input" placeholder="e.g. UPI/4098234891 or Cash Slip">
+        </div>
+
+        <button type="submit" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+          Record & Issue Digital Receipt
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================
+       MODAL 4: ADMIN MANDI RATES UPDATE
+       ======================================================= -->
+  <div id="modal-update-rates" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <h3 class="sheet-title">Update Live Mandi Benchmark Rates</h3>
+        <button class="close-sheet-btn" onclick="closeModal('modal-update-rates')">✕</button>
+      </div>
+
+      <form id="form-update-rates">
+        <div style="background:var(--color-primary-light); padding:10px; border-radius:var(--radius-md); font-size:12px; color:var(--color-primary); margin-bottom:12px;">
+          ⚠️ <strong>Admin Compliance Guard:</strong> Modifying these rates updates all subsequent hen intakes and billing derivations across the entire system.
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Marga (Male) Rate per kg (₹)</label>
+          <input type="number" step="0.5" id="input-rate-marga" class="form-input" value="142.00" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Margee (Female) Rate per kg (₹)</label>
+          <input type="number" step="0.5" id="input-rate-margee" class="form-input" value="128.50" required>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          Lock & Broadcast Rates
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

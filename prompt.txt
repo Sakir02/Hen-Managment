@@ -1,0 +1,33 @@
+Build a complete Expo React Native mobile app (SDK 57, Expo Router) with User side and Admin side using the identical color palette as the web admin portal. Keep it very simple, clean, and easy to use — minimal UI, no clutter.
+
+Color Palette (use ONLY these):
+- Primary Green: #2E7D32
+- Primary Dark: #1B5E20
+- Primary Light: #E8F5E9
+- Secondary Orange: #F57C00
+- Secondary Dark: #E65100
+- Secondary Light: #FFF3E0
+- Background: #F8FAF8
+- Surface: #FFFFFF
+- Sidebar/Dark: #0D1F12
+- Text Primary: #111827
+- Text Secondary: #4B5563
+- Text Muted: #9CA3AF
+- Text Inverse: #FFFFFF
+- Success: #16A34A
+- Warning: #F59E0B
+- Danger: #DC2626
+- Info: #2563EB
+- Border: #E5E7EB
+- Border Subtle: #F3F4F6
+
+Requirements:
+- Expo Router navigation (src/app/ routes)
+- User screens: Login, Home, Profile, Settings
+- Admin screens: Login, Dashboard, Manage Users, Settings
+- Bottom tab navigation (iOS/Android style)
+- Same visual language as the web admin portal
+- Responsive, touch-friendly, no extra colors
+- Font: Inter
+
+Output clean, production-ready code following the mobile AGENTS.md conventions. No extra colors outside the palette.
