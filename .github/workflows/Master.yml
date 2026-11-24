@@ -1,0 +1,70 @@
+name: Hen Management CI/CD
+
+on:
+  push:
+    branches: [ main, wip/sakir ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # ==========================================
+  # 1. Backend CI: Python / Django
+  # ==========================================
+  backend-checks:
+    name: Backend CI (Django)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Django System Checks
+        env:
+          SECRET_KEY: 'ci-secret-key-for-testing'
+          DEBUG: 'True'
+        run: |
+          python manage.py check
+
+  # ==========================================
+  # 2. Web CI: Vite + React Admin
+  # ==========================================
+  web-checks:
+    name: Web Admin CI (Vite + React)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./web
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: web/package.json
+
+      - name: Install Web Dependencies
+        run: npm install
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Build Web Application
+        run: npm run build
